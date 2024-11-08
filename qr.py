@@ -23,7 +23,7 @@ def CGS(A):
     
     
 # Calcolo della fattorizzazione QR con il metodo di Gram-Schmidt Modificato :
-def MGS(A):
+def MGS(A,verbose=False):
     # INPUT:  A - np.matrix
     m = A.shape[0] 
     n = A.shape[1]  
@@ -37,7 +37,9 @@ def MGS(A):
         #print('Q[:,', j, '] = ', Q[:,j])
       #endfor
       R[j,j] = np.linalg.norm(Q[:,j]);             # norma 2
-      if  R[j,j]==0:  break;  #endif       # significa che c'e' dipendenza lineare.
+      if verbose: print("R[",j,",",j,"] = ",R[j,j])
+      if R[j,j] < 1.e-15: break; #endif
+      #if R[j,j]==0:  break;  #endif       # significa che c'e' dipendenza lineare.
       Q[:,j] = Q[:,j] / R[j,j];            # Q ha colonne ortogonali e di norma 2 unitaria, e dunque e' ortonormale
     #endfor                                
     return Q,R
