@@ -180,11 +180,11 @@ def PropagateInput(Inputs, Measurements, FirstState, Dynamic, F, NetWeights, Net
     #endfor
     
     # parsimony:
-    tmpI = np.where(np.diag(NetWeights[-2]) <= 0.0)[0]
-    x_mask = np.ones(nx); x_mask[tmpI] = 0
-    for Layer in range(Layers+1):    
-        States[:,[Layer]] = decode(States[:,[Layer]],x_mask)
-    #endfor
+    #tmpI = np.where(np.diag(NetWeights[-2]) <= 0.0)[0]
+    #x_mask = np.ones(nx); x_mask[tmpI] = 0
+    #for Layer in range(Layers+1):    
+    #    States[:,[Layer]] = decode(States[:,[Layer]],x_mask)
+    ##endfor
 
     return States, MeasurementMinusCStates, GainMeasurementMinusCFs, MeasurementMinusCFs, FStateDynInputs
 
