@@ -38,8 +38,8 @@ def MGS(A,verbose=False):
       #endfor
       R[j,j] = np.linalg.norm(Q[:,j]);             # norma 2
       if verbose: print("R[",j,",",j,"] = ",R[j,j])
-      if R[j,j] < 1.e-15: break; #endif
-      #if R[j,j]==0:  break;  #endif       # significa che c'e' dipendenza lineare.
+      #if R[j,j] < 1.e-15: break; # NB: ONLY FOR RANK-REVEALING!
+      if R[j,j]==0:  break;               # significa che c'e' dipendenza lineare.
       Q[:,j] = Q[:,j] / R[j,j];            # Q ha colonne ortogonali e di norma 2 unitaria, e dunque e' ortonormale
     #endfor                                
     return Q,R
